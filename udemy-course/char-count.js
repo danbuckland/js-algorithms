@@ -9,18 +9,13 @@ const charCount = (string) => {
   // create chars object {}
   let charsObject = {}
   // if the string is empty or not a string, return {}
-  if (!string || typeof (string) !== 'string') { return charsObject }
+  if (!string || typeof(string) !== 'string') { return charsObject }
   // loop through the chars in the string array
-  string = string.toLowerCase();
-  for(let char of string ) {
+  for (let char of string.toLowerCase()) {
     // if char is a letter or number
     if ((/['0-z']/).test(char)) {
-      // if char key exists in object, increment count
-      if (charsObject[char]) {
-        charsObject[char] += 1
-      } else { // else add char as new key with value 1
-        charsObject[char] = 1
-      }
+      // if char key exists in object, increment count, else add char as new key with value 1
+      charsObject[char] ? charsObject[char]++ : charsObject[char] = 1
     }
   }
   // return chars object
