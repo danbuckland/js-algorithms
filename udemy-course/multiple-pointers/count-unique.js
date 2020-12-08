@@ -37,8 +37,24 @@ const countUniqueValues = (array) => {
       right--
     }
   }
-  
   return count
+}
+
+// Solving the same problem, but assuming array can be mutated
+const countUniqueValuesDestructive = (array) => {
+  if (array.length === 0) { return 0 }
+  if (array.length === 1) { return 1 }
+  let i = 0, j = 1
+  while (j < array.length) {
+    if (array[i] === array[j]) {
+      j++
+    } else {
+      i++
+      array[i] = array[j]
+      j++
+    }
+  }
+  return i + 1
 }
 
 console.log(countUniqueValues([0, 0, 1])) // 2
@@ -47,3 +63,12 @@ console.log(countUniqueValues([])) // 0
 console.log(countUniqueValues([1, 1, 1, 1, 1, 1, 2])) // 2
 console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
 console.log(countUniqueValues([-1, 1, 2])) // 3
+
+console.log('\n')
+
+console.log(countUniqueValuesDestructive([0, 0, 1])) // 2
+console.log(countUniqueValuesDestructive([0, 0])) // 1
+console.log(countUniqueValuesDestructive([])) // 0
+console.log(countUniqueValuesDestructive([1, 1, 1, 1, 1, 1, 2])) // 2
+console.log(countUniqueValuesDestructive([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
+console.log(countUniqueValuesDestructive([-1, 1, 2])) // 3
