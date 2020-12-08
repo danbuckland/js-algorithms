@@ -13,9 +13,9 @@ const charCount = (string) => {
   // loop through the chars in the string array
   for (let char of string.toLowerCase()) {
     // if char is a letter or number
-    if ((/['0-z']/).test(char)) {
+    if ((/['0-z']/).test(char)) { // this is nice and legible, but regex is not most performant
       // if char key exists in object, increment count, else add char as new key with value 1
-      charsObject[char] ? charsObject[char]++ : charsObject[char] = 1
+      charsObject[char] = ++charsObject[char] || 1
     }
   }
   // return chars object
