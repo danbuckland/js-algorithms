@@ -10,8 +10,12 @@ const maxSubarraySum = (array, n) => {
   // short circuit if array is empty, n < 1 or n > array length
   if (array.length === 0 || n < 1 || n > array.length) { return null }
   // get the sum of the first n numbers in array
-  const reducer = (accumulator, currentValue) => accumulator + currentValue
-  let windowTotal = array.slice(0, n).reduce(reducer)
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue
+  // let windowTotal = array.slice(0, n).reduce(reducer) -> pretty but less performant!
+  let windowTotal = 0;
+  for (let i = 0; i < n; i++) {
+    windowTotal += array[i];
+  }
   // set max to initial total
   let max = windowTotal
   // loop through array until window reaches end of the array
@@ -19,7 +23,7 @@ const maxSubarraySum = (array, n) => {
   for (let j = n; j < array.length; j++) {
     // delete first item in the window and add the last
     windowTotal = windowTotal - array[i] + array[j]
-    if (max < windowTotal) { max = windowTotal }
+    max = Math.max(windowTotal, max)
     // slide the window along
     i++
   }
