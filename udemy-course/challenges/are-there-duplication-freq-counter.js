@@ -5,6 +5,7 @@
 // Assume the arguments are either strings or integers
 // Assume the arguments can be mixed e.g. 'a', 1, 'dog'
 
+// As a frequency counter with O(n) complexity
 const areThereDuplicates = (...args) => {
   // return if there is only one argument or no arguments
   if (args.length < 2) { return false }
