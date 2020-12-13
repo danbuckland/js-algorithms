@@ -25,12 +25,14 @@ const minSubArrayLen = (array, target) => {
     for (let i = 0; i < subArrayLength; i ++) {
       total += array[i]
     }
+    if (total >= target) { 
+      return subArrayLength
+    }
     // slide the window up and down checking the total each time
     for (let right = subArrayLength; right <= array.length; right++) {
-      if (total >= target) {
-        return subArrayLength
-      } else {
-        total = total - array[right - subArrayLength] + array[right]
+      total = total - array[right - subArrayLength] + array[right]
+      if (total >= target) { 
+        return subArrayLength 
       }
     }
   }
