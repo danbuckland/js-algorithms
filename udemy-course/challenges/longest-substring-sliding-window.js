@@ -19,13 +19,13 @@ const findLongestSubstring = (string) => {
   for (let right = 1; right < string.length; right++) {
     // if right does not exist
     debugger
-    if (!(string[right] in charPositions) || charPositions[string[right]] < left) { // avoids keys set to 0 returning falsey
+    if (!(string[right] in charPositions) || charPositions[string[right]] < left) {
       // increment count
       count++
       // add right to object as key with position
       charPositions[string[right]] = right
-    } else {
       maxLength = Math.max(maxLength, count)
+    } else {
       // get the value stored for the key
       // move left to value + 1
       left = charPositions[string[right]] + 1
@@ -39,11 +39,18 @@ const findLongestSubstring = (string) => {
 }
 
 // Test cases
+console.log(findLongestSubstring('no')) // 2
 console.log(findLongestSubstring('moon')) // 2
 console.log(findLongestSubstring('abracadabra')) // 4
 console.log(findLongestSubstring('')) // 0
 console.log(findLongestSubstring('aaaaaaaaa')) // 1
 console.log(findLongestSubstring('findlongestsubstring')) // 8
+console.log(findLongestSubstring('rithmschool')) // 7
+console.log(findLongestSubstring('thisisawesome')) // 6
+console.log(findLongestSubstring('thecatinthehat')) // 7
+console.log(findLongestSubstring('bbbbbb')) // 1
+console.log(findLongestSubstring('longestsubstring')) // 8
+console.log(findLongestSubstring('thisishowwedoit')) // 6
 
 
 
