@@ -18,13 +18,12 @@ const findLongestSubstring = (string) => {
 
   for (let right = 1; right < string.length; right++) {
     // if right does not exist
-    debugger
     if (!(string[right] in charPositions) || charPositions[string[right]] < left) {
       // increment count
       count++
+      maxLength = Math.max(maxLength, count)
       // add right to object as key with position
       charPositions[string[right]] = right
-      maxLength = Math.max(maxLength, count)
     } else {
       // get the value stored for the key
       // move left to value + 1
