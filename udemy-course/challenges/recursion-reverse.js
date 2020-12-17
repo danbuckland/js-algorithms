@@ -4,7 +4,7 @@
 const reverse = (string) => {
  // base case
  // if you reach the start of the string, return it
- if (string.length === 1) return string
+ if (string.length <= 1) return string
 
  return string[string.length - 1] + reverse(string.substring(0, string.length - 1))
 }
