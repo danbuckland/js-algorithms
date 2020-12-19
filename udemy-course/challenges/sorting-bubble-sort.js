@@ -4,16 +4,19 @@ const bubbleSort = (array) => {
     swapNeeded = false
     for (let i = 1; i < array.length; i++) {
       if (array[i] < array[i - 1]) {
-        const temp = array[i - 1]
-        array[i - 1] = array[i]
-        array[i] = temp
+        swap(array, i - 1, i)
         swapNeeded = true
       }
     }
-    console.log(array.toString())
   }
 
   return array
+}
+
+const swap = (array, a, b) => {
+  const temp = array[a]
+  array[a] = array[b]
+  array[b] = temp
 }
 
 console.log(bubbleSort([1, 31, 14, 2, 3, 56, 0, -1]))
