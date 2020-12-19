@@ -1,6 +1,7 @@
 const selectionSort = (array) => {
-  let count = 0
-
+  let comparisons = 0
+  let swaps = 0
+  
   for (let i = 0; i < array.length - 1; i++) {
     let min = array[i];
     let minIndex = i
@@ -9,13 +10,15 @@ const selectionSort = (array) => {
         minIndex = j
         min = array[j]
       }
-      count++
+      comparisons++
     }
     if (i !== minIndex) {
       swap(array, i, minIndex)
+      swaps++
     }
   }
-  console.log(`Took ${count} comparisons`)
+  console.log(`Made ${comparisons} comparisons`)
+  console.log(`Made ${swaps} swaps`)
   return array
 }
 

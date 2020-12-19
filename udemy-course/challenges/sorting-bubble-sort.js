@@ -1,5 +1,6 @@
 const bubbleSort = (array) => {
-  let count = 0
+  let comparisons = 0
+  let swaps = 0 
   let swapNeeded = true
   let j = array.length
   while (swapNeeded) {
@@ -9,13 +10,15 @@ const bubbleSort = (array) => {
       if (array[i] < array[i - 1]) {
         swap(array, i - 1, i)
         swapNeeded = true
+        swaps++
         swapIndex = i
       }
-      count++
+      comparisons++
     }
     j = swapIndex
   }
-  console.log(`Took ${count} comparisons`)
+  console.log(`Made ${comparisons} comparisons`)
+  console.log(`Made ${swaps} swaps`)
   return array
 }
 
