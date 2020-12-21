@@ -2,9 +2,7 @@ const testArray = [4, 2, 1, 3, 2, 1, 3, 5];
 
 const mergeSort = (unsortedArray) => {
   // if the array is of length 0, discard it!
-  if (unsortedArray.length === 0) {
-    return unsortedArray
-  } else if (unsortedArray.length === 1) {
+  if (unsortedArray.length <= 1) {
     return unsortedArray
   } else {
     // else the array is of length > 2 so it should be split
