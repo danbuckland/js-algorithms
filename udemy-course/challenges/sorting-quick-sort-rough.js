@@ -1,3 +1,4 @@
+const {performance} = require('perf_hooks');
 // Attempt to write quickSort from the breifest of descriptions
 
 const quickSort = (array) => {
@@ -21,15 +22,19 @@ const quickSort = (array) => {
 }
 
 const moveItem = (array, from, to) => {
-  let passenger = array.splice(from, 1) // Grab the item and remove it
-  array.splice(to, 0, ...passenger) // put it back in the array
+  let temp = array[from]
+  array[from] = array[to]
+  array[to] = temp
 }
 
 // Test cases:
-console.log(quickSort([4, 3, 2, 1, 5]))
-console.log(quickSort([1, 3, 5, 2, 1]))
-console.log(quickSort([-1, 4, 3, 2, 5]))
+// console.log(quickSort([4, 3, 2, 1, 5]))
+// console.log(quickSort([1, 3, 5, 2, 1]))
+// console.log(quickSort([-1, 4, 3, 2, 5]))
 
-let data = Array.apply(null, {length: 10000}).map(Function.call, Math.random)
+let data = Array.apply(null, {length: 100000}).map(Function.call, Math.random)
+const t1 = performance.now()
 console.log(quickSort(data))
+const t2 = performance.now()
 
+console.log(`This calculation took ${(t2-t1)/1000} seconds`)

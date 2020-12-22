@@ -1,3 +1,5 @@
+const {performance} = require('perf_hooks');
+
 const mergeSort = (array) => {
   // base case is when array length is 1 or 0
   if (array.length <= 1) return array
@@ -37,9 +39,12 @@ const merge = (arr1, arr2) => {
 }
 
 // Test cases
-console.log(merge([0, 2, 14, 20], [2, 3, 5, 8]))
-console.log(mergeSort([4,3,2,1]))
-console.log(mergeSort([10, 9, 9, 7, 4, 5, 2, 1, 7]))
+// console.log(merge([0, 2, 14, 20], [2, 3, 5, 8]))
+// console.log(mergeSort([4,3,2,1]))
+// console.log(mergeSort([10, 9, 9, 7, 4, 5, 2, 1, 7]))
 
-let data = Array.apply(null, {length: 10000}).map(Function.call, Math.random)
+let data = Array.apply(null, {length: 100000}).map(Function.call, Math.random)
+const t1 = performance.now()
 console.log(mergeSort(data))
+const t2 = performance.now()
+console.log(`This calculation took ${(t2-t1)/1000} seconds`)
