@@ -9,7 +9,7 @@ const insertionSort = (array) => {
         break
       } else if (array[i] <= array[j]) {
         // insert the item at this point
-        moveItem(array, i, j)
+        swapItem(array, i, j)
         sortedEnd++
         break
       }
@@ -18,9 +18,10 @@ const insertionSort = (array) => {
   return array
 }
 
-const moveItem = (array, from, to) => {
-  let passenger = array.splice(from, 1) // Grab the item and remove it
-  array.splice(to, 0, ...passenger) // put it back in the array
+const swapItem = (array, from, to) => {
+  let temp = array[from]
+  array[from] = array[to]
+  array[to] = temp
 }
 
 console.log(insertionSort([1, 31, 14, 2, 3, 56, 0, -1]))
