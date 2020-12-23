@@ -53,7 +53,7 @@ const randomInt = () => {
 console.log(randomInt())
 console.log(radixSort([2, 34, 0, 740, 987, 91235, 309, 1, 3097, 2000, 8092, 7, 17, 12]))
 
-let data = Array.apply(null, {length: 100}).map(Function.call, randomInt)
+let data = Array.apply(null, {length: 100000}).map(Function.call, randomInt)
 const t1 = performance.now()
 console.log(radixSort(data))
 const t2 = performance.now()
