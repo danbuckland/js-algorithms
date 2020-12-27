@@ -61,11 +61,11 @@ class SinglyLinkedList {
       this.head = node
     }
     this.length++
-    return list
+    return this
   }
 
   get(index) {
-    if (index < 0 || index >= this.length || typeof(index) !== 'number') return undefined
+    if (index < 0 || index >= this.length || typeof(index) !== 'number') return null
     if (index === this.length - 1) return tail
 
     let value = this.head
@@ -74,6 +74,22 @@ class SinglyLinkedList {
     }
 
     return value
+  }
+
+  set(index, value) {
+    if (index < 0 || index > this.length || typeof(index) !== 'number') return null
+
+    if (index === 0) return this.unshift(value)
+    if (index === this.length) return this.push(value)
+    
+    let newNode = new Node(value)
+    let previous = this.get(index - 1)
+    let next = this.get(index)
+    previous.next = newNode
+    newNode.next = next
+    this.length++
+
+    return this
   }
 }
 
