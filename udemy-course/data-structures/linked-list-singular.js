@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class SinglyLinkedList{
+class SinglyLinkedList {
   constructor() {
     this.head = null
     this.tail = null
@@ -26,21 +26,11 @@ class SinglyLinkedList{
   }
 
   pop() {
-    // if this list is empty, just return
     if (this.length === 0) return undefined
-    let poppedNode = this.tail
-    
-    // if there's only one item in the list, set head and tail to null
-    if (this.length === 1) {
-      this.head = null
-      this.tail = null
-      this.length = 0
-      return poppedNode
-    }
-    
+
     let current = this.head
     let newTail = current
-    while(current.next) {
+    while (current.next) {
       newTail = current
       current = current.next
     }
@@ -48,7 +38,7 @@ class SinglyLinkedList{
     this.tail = newTail
     this.tail.next = null
     this.length--
-
+    if (this.length === 0) { this.head = null, this.tail = null }
     return current
   }
 }
@@ -66,6 +56,8 @@ console.log(list.pop())
 console.log(list.pop())
 console.log(list.pop())
 console.log(list.pop())
+console.log(list.pop())
+console.log(list)
 console.log(list.pop())
 console.log(list)
 
