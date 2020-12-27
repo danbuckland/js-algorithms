@@ -103,15 +103,15 @@ class SinglyLinkedList {
 
   remove(index) {
     console.log(index)
-    if (index < 0 || index >= this.length || typeof(index) !== 'number' || isNaN(index)) return false
-    if (index === 0) return !!this.unshift()
-    if (index === this.length - 1) return !!this.pop()
+    if (index < 0 || index >= this.length || typeof(index) !== 'number' || isNaN(index)) return undefined
+    if (index === 0) return this.shift()
+    if (index === this.length - 1) return this.pop()
     
     let previous = this.get(index - 1)
-    let next = this.get(index + 1)
-    previous.next = next
+    let removed = previous.next
+    previous.next = removed.next
     this.length--
-    return true
+    return removed
   }
 }
 
