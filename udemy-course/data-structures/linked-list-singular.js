@@ -66,7 +66,7 @@ class SinglyLinkedList {
 
   get(index) {
     if (index < 0 || index >= this.length || typeof(index) !== 'number') return null
-    if (index === this.length - 1) return tail
+    if (index === this.length - 1) return this.tail
 
     let value = this.head
     for (let i = 0; i < index; i++) {
@@ -77,6 +77,13 @@ class SinglyLinkedList {
   }
 
   set(index, value) {
+    let node = this.get(index)
+    if (!node) return false
+    node.val = value
+    return true
+  }
+
+  insert(index, value) {
     if (index < 0 || index > this.length || typeof(index) !== 'number') return null
 
     if (index === 0) return this.unshift(value)
