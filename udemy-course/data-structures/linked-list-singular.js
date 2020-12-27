@@ -78,16 +78,26 @@ class SinglyLinkedList {
 
   set(index, value) {
     let node = this.get(index)
-    if (!node) return false
+    if (!node) {
+      return false
+    }
+      
     node.val = value
     return true
   }
 
   insert(index, value) {
-    if (index < 0 || index > this.length || typeof(index) !== 'number') return null
+    if (index < 0 || index > this.length || typeof(index) !== 'number') return false
 
-    if (index === 0) return this.unshift(value)
-    if (index === this.length) return this.push(value)
+    if (index === 0) {
+      this.unshift(value)
+      return true
+    }
+    
+    if (index === this.length) {
+      this.push(value)
+      return true
+    }
     
     let newNode = new Node(value)
     let previous = this.get(index - 1)
@@ -96,7 +106,7 @@ class SinglyLinkedList {
     newNode.next = next
     this.length++
 
-    return this
+    return true
   }
 }
 
