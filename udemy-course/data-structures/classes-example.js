@@ -30,11 +30,11 @@ class Student {
   }
 
   static enrollStudents() {
-    return "Enrolling this year's students"
+    console.log("Enrolling this year's students")
   }
 }
 
-
+// Instance methods
 let dan = new Student("Dan", "Buckland", 13)
 dan.addScore(36, 50)
 console.log(dan.calculateAverage())
@@ -45,4 +45,5 @@ console.log(dan.markLate())
 console.log(dan.markLate())
 console.log(dan.markLate())
 
-console.log(Student.enrollStudents())
+// Static class method
+Student.enrollStudents()

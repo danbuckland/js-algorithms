@@ -50,34 +50,52 @@ class SinglyLinkedList {
     if (this.length === 0) {this.tail = null}
     return shifted
   }
+
+  unshift(value) {
+    let node = new Node(value)
+    if (this.length === 0) {
+      this.head = node
+      this.tail = node
+    } else {
+      node.next = this.head
+      this.head = node
+    }
+    this.length++
+    return list
+  }
 }
 
 let list = new SinglyLinkedList()
-list.push('Hi')
-list.push('there')
-list.push('friend')
-list.push('how')
-list.push('are')
-list.push('you?')
-console.log(list.shift())
-console.log(list.shift())
-console.log(list.shift())
-console.log(list.shift())
-console.log(list.shift())
-console.log(list.shift())
-console.log(list)
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list)
-console.log(list.pop())
-console.log(list)
+console.log(list.unshift('!'))
+console.log(list.unshift('world'))
+console.log(list.unshift('hello'))
+debugger
+
+// list.push('Hi')
+// list.push('there')
+// list.push('friend')
+// list.push('how')
+// list.push('are')
+// list.push('you?')
+// console.log(list.shift())
+// console.log(list.shift())
+// console.log(list.shift())
+// console.log(list.shift())
+// console.log(list.shift())
+// console.log(list.shift())
+// console.log(list)
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list.pop())
+// console.log(list)
+// console.log(list.pop())
+// console.log(list)
 
 
-// let first = new Node("Hi")
-// first.next = new Node("there")
-// first.next.next = new Node("Dave")
+// // let first = new Node("Hi")
+// // first.next = new Node("there")
+// // first.next.next = new Node("Dave")
