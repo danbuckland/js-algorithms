@@ -65,7 +65,7 @@ class SinglyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || index >= this.length || typeof(index) !== 'number') return null
+    if (index < 0 || index >= this.length || typeof(index) !== 'number' || isNaN(index)) return null
     if (index === this.length - 1) return this.tail
 
     let value = this.head
@@ -87,7 +87,7 @@ class SinglyLinkedList {
   }
 
   insert(index, value) {
-    if (index < 0 || index > this.length || typeof(index) !== 'number') return false
+    if (index < 0 || index > this.length || typeof(index) !== 'number' || isNaN(index)) return false
     if (index === 0) return !!this.unshift(value)
     if (index === this.length) return !!this.push(value)
     
@@ -98,6 +98,19 @@ class SinglyLinkedList {
     newNode.next = next
     this.length++
 
+    return true
+  }
+
+  remove(index) {
+    console.log(index)
+    if (index < 0 || index >= this.length || typeof(index) !== 'number' || isNaN(index)) return false
+    if (index === 0) return !!this.unshift()
+    if (index === this.length - 1) return !!this.pop()
+    
+    let previous = this.get(index - 1)
+    let next = this.get(index + 1)
+    previous.next = next
+    this.length--
     return true
   }
 }
