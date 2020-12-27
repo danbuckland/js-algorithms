@@ -63,20 +63,27 @@ class SinglyLinkedList {
     this.length++
     return list
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length || typeof(index) !== 'number') return undefined
+
+    let value = this.head
+    for (let i = 0; i < index; i++) {
+      value = value.next
+    }
+
+    return value
+  }
 }
 
 let list = new SinglyLinkedList()
-console.log(list.unshift('!'))
-console.log(list.unshift('world'))
-console.log(list.unshift('hello'))
+list.push('Hi')
+list.push('there')
+list.push('friend')
+list.push('how')
+list.push('are')
+list.push('you?')
 debugger
-
-// list.push('Hi')
-// list.push('there')
-// list.push('friend')
-// list.push('how')
-// list.push('are')
-// list.push('you?')
 // console.log(list.shift())
 // console.log(list.shift())
 // console.log(list.shift())
