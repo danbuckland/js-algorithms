@@ -28,27 +28,28 @@ class SinglyLinkedList{
   pop() {
     // if this list is empty, just return
     if (this.length === 0) return undefined
-    // if there's only one item in the list, set head and tail to null
     let poppedNode = this.tail
+    
+    // if there's only one item in the list, set head and tail to null
     if (this.length === 1) {
       this.head = null
       this.tail = null
+      this.length = 0
+      return poppedNode
     }
-    // if there are more than one, traverse the list to length - 1
-    if (this.length > 1) {
-      let penultimate = this.getPenultimate()      
-      this.tail = penultimate
-      penultimate.next = null
+    
+    let current = this.head
+    let newTail = current
+    while(current.next) {
+      newTail = current
+      current = current.next
     }
+
+    this.tail = newTail
+    this.tail.next = null
     this.length--
-    return poppedNode
-  }
-  getPenultimate(){
-    let penultimate = this.head
-    while(penultimate.next !== this.tail) {
-      penultimate = penultimate.next
-    }
-    return penultimate
+
+    return current
   }
 }
 
