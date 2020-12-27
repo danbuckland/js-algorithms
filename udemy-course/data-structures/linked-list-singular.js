@@ -41,6 +41,15 @@ class SinglyLinkedList {
     if (this.length === 0) { this.head = null, this.tail = null }
     return current
   }
+
+  shift() {
+    if (this.length === 0) return undefined
+    let shifted = this.head
+    this.head = this.head.next
+    this.length--
+    if (this.length === 0) {this.tail = null}
+    return shifted
+  }
 }
 
 let list = new SinglyLinkedList()
@@ -50,6 +59,13 @@ list.push('friend')
 list.push('how')
 list.push('are')
 list.push('you?')
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
+console.log(list)
 console.log(list.pop())
 console.log(list.pop())
 console.log(list.pop())
