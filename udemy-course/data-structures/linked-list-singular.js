@@ -66,6 +66,7 @@ class SinglyLinkedList {
 
   get(index) {
     if (index < 0 || index >= this.length || typeof(index) !== 'number') return undefined
+    if (index === this.length - 1) return tail
 
     let value = this.head
     for (let i = 0; i < index; i++) {
