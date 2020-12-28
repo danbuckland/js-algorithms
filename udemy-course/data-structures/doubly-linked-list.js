@@ -134,6 +134,24 @@ class DoublyLinkedList {
     return removedNode
   }
 
+  reverse() {
+    // swap the head and the tail
+    let current = this.head
+    this.head = this.tail
+    this.tail = current
+    let previous = null
+    let next
+    // for each node, next should be swapped with previous
+    for (let i = 0; i < this.length; i++) {
+      next = current.next
+      current.next = previous
+      current.previous = next
+      current.next = previous
+      previous = current
+      current = next
+    }
+  }
+
   print() {
     let array = []
     for (let i = 0; i < this.length; i++) {
