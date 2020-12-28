@@ -10,36 +10,40 @@ class BinarySearchTree {
   constructor() {
     this.root = null
   }
-
+  
   insert(value) {
-    // if root is null then set this.root to node
-    if (!this.root) {
-      this.root = new Node(value)
-      return true
+    let newNode = new Node(value)
+
+    if (!this.root) { 
+      this.root = newNode
+      return this
     }
 
     let targetPos = this.root
     let parentPos = null
-    let path = 0
+    let path
+
     while(targetPos) {
-      debugger
       if (targetPos.value > value) {
         parentPos = targetPos
         targetPos = targetPos.left
         path = -1
-      } else {
+      } else if (targetPos.value < value) {
         parentPos = targetPos
         targetPos = targetPos.right
         path = 1
+      } else {
+        return undefined
       }
     }
+
     if (path < 0) {
-      parentPos.left = new Node(value)
+      parentPos.left = newNode
     } else {
-      parentPos.right = new Node(value)
+      parentPos.right = newNode
     }
-    
-    return true
+
+    return this
   }
 }
 
