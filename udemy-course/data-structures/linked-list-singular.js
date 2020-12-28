@@ -113,6 +113,40 @@ class SinglyLinkedList {
     this.length--
     return removed
   }
+
+  reverse() {
+    // 13(H) -> 15 -> 18 -> 1(T)
+    // 13(T) -> 15 -> 18 -> 1(H)
+    // 13(T) <- 15 <- 18 <- 1(H)
+    // c
+    // swap the head and tail
+    let current = this.head
+    this.head = this.tail
+    this.tail = current
+
+    let previous = null
+    let next
+
+    // loop through
+    for (let i = 0; i < this.length; i++) {
+      next = current.next
+      current.next = previous
+      previous = current
+      current = next
+    }
+
+    return list
+  }
+
+  print() {
+    let arr = []
+    let current = this.head
+    while(current) {
+      arr.push(current.val)
+      current = current.next
+    }
+    console.log(arr)
+  }
 }
 
 let list = new SinglyLinkedList()
@@ -123,6 +157,7 @@ list.push('how')
 list.push('are')
 list.push('you?')
 debugger
+list.reverse()
 // console.log(list.shift())
 // console.log(list.shift())
 // console.log(list.shift())
