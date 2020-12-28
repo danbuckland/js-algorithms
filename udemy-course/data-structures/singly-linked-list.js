@@ -102,7 +102,6 @@ class SinglyLinkedList {
   }
 
   remove(index) {
-    console.log(index)
     if (index < 0 || index >= this.length || typeof(index) !== 'number' || isNaN(index)) return undefined
     if (index === 0) return this.shift()
     if (index === this.length - 1) return this.pop()
