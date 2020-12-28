@@ -115,11 +115,6 @@ class SinglyLinkedList {
   }
 
   reverse() {
-    // 13(H) -> 15 -> 18 -> 1(T)
-    // 13(T) -> 15 -> 18 -> 1(H)
-    // 13(T) <- 15 <- 18 <- 1(H)
-    // c
-    // swap the head and tail
     let current = this.head
     this.head = this.tail
     this.tail = current
@@ -127,7 +122,6 @@ class SinglyLinkedList {
     let previous = null
     let next
 
-    // loop through
     for (let i = 0; i < this.length; i++) {
       next = current.next
       current.next = previous
