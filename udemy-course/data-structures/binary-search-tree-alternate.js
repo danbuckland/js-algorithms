@@ -20,30 +20,26 @@ class BinarySearchTree {
     }
 
     let targetPos = this.root
-    let parentPos = null
-    let path
 
-    while(targetPos) {
-      if (targetPos.value > value) {
-        parentPos = targetPos
-        targetPos = targetPos.left
-        path = -1
-      } else if (targetPos.value < value) {
-        parentPos = targetPos
-        targetPos = targetPos.right
-        path = 1
+    while(true) {
+      if (value < targetPos.value) {
+        if (!targetPos.left) {
+          targetPos.left = newNode
+          return this
+        } else {
+          targetPos = targetPos.left
+        }
+      } else if (value > targetPos.value) {
+        if (!targetPos.right) {
+          targetPos.right = newNode
+          return this
+        } else {
+          targetPos = targetPos.right
+        }
       } else {
         return this
       }
     }
-
-    if (path < 0) {
-      parentPos.left = newNode
-    } else {
-      parentPos.right = newNode
-    }
-
-    return this
   }
 }
 
