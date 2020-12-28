@@ -28,22 +28,34 @@ class DoublyLinkedList {
   }
 
   pop() {
-    // if the length is 0 return undefined
     if (this.length === 0) return undefined
-    // if the length is 1 return that item and set head and tail to null
     let poppedItem = this.tail
     if (this.length === 1) {
       this.head = null
       this.tail = null
     } else {
-      // if the length is 2
       this.tail = this.tail.previous
       this.tail.next = null
+      poppedItem.previous = null
     }
-
     this.length--
-    poppedItem.previous = null
     return poppedItem
+  }
+
+  shift() {
+    // if the list is 0 return undefined
+    if (this.length === 0) return undefined
+    let shiftedNode = this.head
+    if (this.length === 1) {
+      this.head = null
+      this.tail = null
+    } else {
+      this.head = shiftedNode.next
+      this.head.previous = null
+      shiftedNode.next = null
+    }
+    this.length--
+    return shiftedNode
   }
 }
 
@@ -51,9 +63,10 @@ let list = new DoublyLinkedList()
 list.push('one')
 list.push('two')
 list.push('three')
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
+debugger
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
+console.log(list.shift())
 
 debugger
