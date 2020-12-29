@@ -6,6 +6,38 @@ class Node {
   }
 }
 
+class Queue {
+  constructor() {
+    this.first = null
+    this.last = null 
+    this.size = 0
+  }
+
+  enqueue(node) {
+    // add something to the end of the list
+    if (!this.first) {
+      this.first = node
+      this.last = node
+    } else {
+      this.last.next = node
+      this.last = node
+    }
+    return ++this.size
+  }
+
+  dequeue() {
+    // remove this first item in the list
+    if (!this.first) return null
+    let dequeued = this.first
+    if (this.size === 1) {
+      this.last = null
+    }
+    this.first = this.first.next
+    this.size--
+    return dequeued
+  }
+}
+
 class BinarySearchTree {
   constructor() {
     this.root = null
@@ -45,18 +77,35 @@ class BinarySearchTree {
 
     return this
   }
+
+  find(value) {
+    if (!this.root) return false
+
+    let current = this.root
+    while(current) {
+      if (value < current.value) {
+        current = current.left
+      } else if (value > current.value) {
+        current = current.right
+      } else {
+        return true
+      }
+    }
+    return false
+  }
 }
 
-let tree = new BinarySearchTree()
-tree.insert(10)
-tree.insert(15)
-tree.insert(14)
-tree.insert(1)
-tree.insert(-2)
-tree.insert(200)
-tree.insert(8)
-tree.insert(8).insert(13)
-debugger
+module.exports = { BinarySearchTree, Queue }
+
+// let tree = new BinarySearchTree()
+// tree.insert(10)
+// tree.insert(15)
+// tree.insert(14)
+// tree.insert(1)
+// tree.insert(-2)
+// tree.insert(200)
+// tree.insert(8)
+// tree.insert(8).insert(13)
 //         10
 //       /    \
 //      1      15
