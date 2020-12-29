@@ -4,12 +4,6 @@ class MaxBinaryHeap {
   }
 
   insert(value) {
-    const swap = (a, b) => {
-      const temp = this.values[a]
-      this.values[a] = this.values[b]
-      this.values[b] = temp
-    }
-
     let pos = this.values.push(value) - 1
     if (pos === 0) return this
     
