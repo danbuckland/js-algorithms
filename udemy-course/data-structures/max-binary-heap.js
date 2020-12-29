@@ -10,23 +10,15 @@ class MaxBinaryHeap {
       this.values[b] = temp
     }
 
-    const getParentPos = (position) => {
-      if (position % 2 === 0) {
-        return Math.floor(position / 2 - 1)
-      } else {
-        return Math.floor(position / 2 - 2)
-      }
-    }
-    // insert the value at the end
-    let position = this.values.push(value) - 1
-    if (position === 0) return this
-    // then check if the parent is greater than value
-    let parentPosition = getParentPos(position)
+    let pos = this.values.push(value) - 1
+    if (pos === 0) return this
     
-    while (this.values[parentPosition] < value) {
-      swap(parentPosition, position) 
-      position = parentPosition
-      parentPosition = getParentPos(position)
+    let parentPos = Math.floor((pos - 1) / 2)
+
+    while (this.values[parentPos] < value) {
+      [this.values[parentPos],this.values[pos]] = [this.values[pos],this.values[parentPos]]
+      pos = parentPos
+      parentPos = Math.floor((pos - 1) / 2)
     }
 
     return this
