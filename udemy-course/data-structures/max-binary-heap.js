@@ -9,7 +9,7 @@ class MaxBinaryHeap {
     
     let parentPos = Math.floor((pos - 1) / 2)
 
-    while (this.values[parentPos] < value) {
+    while (this.values[parentPos] < value && pos > 0) {
       [this.values[parentPos],this.values[pos]] = [this.values[pos],this.values[parentPos]]
       pos = parentPos
       parentPos = Math.floor((pos - 1) / 2)
@@ -19,6 +19,7 @@ class MaxBinaryHeap {
   }
 }
 
-let mbh = new MaxBinaryHeap()
-mbh.insert(41).insert(39).insert(33).insert(18).insert(27).insert(12).insert(55)
-console.log(mbh.values)
+let heap = new MaxBinaryHeap()
+heap.insert(41).insert(39).insert(33).insert(18).insert(27).insert(12).insert(55)
+console.log(heap.values)
+debugger

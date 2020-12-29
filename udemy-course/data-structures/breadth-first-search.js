@@ -68,7 +68,7 @@ const dfsInOrder = (tree) => {
 console.log(bfs(tree))          // [10, 1, 15, -2, 8, 14, 200, 13]
 console.log(dfsPreOrder(tree))  // [10, 1, -2, 8, 15, 14, 13, 200]
 console.log(dfsPostOrder(tree)) // [-2, 8, 1, 13, 14, 200, 15, 10]
-console.log(dfsInOrder(tree))   // [-2, 1, 8, 13, 14, 200, 15, 10]
+console.log(dfsInOrder(tree))   // [-2, 1, 8, 10, 13, 14, 15, 200]
 //         10
 //       /    \
 //      1      15
