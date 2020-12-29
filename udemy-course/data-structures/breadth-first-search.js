@@ -9,19 +9,14 @@ const bfs = (tree) => {
 
   if (!tree.root) return visited
 
-  debugger
-  let current = tree.root
-  queue.enqueue(current)
+  let node = tree.root
+  queue.enqueue(node)
 
   while(queue.size > 0) {
-    let node = queue.dequeue()
+    node = queue.dequeue()
     visited.push(node.value)
-    if (node.left) {
-      queue.enqueue(node.left)
-    }
-    if (node.right) {
-      queue.enqueue(node.right)
-    }
+    if (node.left) queue.enqueue(node.left)
+    if (node.right) queue.enqueue(node.right)
   }
 
   return visited
