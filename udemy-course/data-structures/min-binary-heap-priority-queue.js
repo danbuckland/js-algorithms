@@ -33,21 +33,20 @@ class PriorityQueue {
   }
 
   sink() {
-    const size = this.values.length
     const value = this.values[0].priority
     let parent = 0
     while (parent < this.values.length - 1) {
       let swap = null
-      let leftChildIndex = parent * 2 + 1
-      let rightChildIndex = parent * 2 + 2
-      let leftChild = this.values[leftChildIndex]
-      let rightChild = this.values[rightChildIndex]
+      const leftChildIndex = parent * 2 + 1
+      const rightChildIndex = parent * 2 + 2
+      const leftChild = this.values[leftChildIndex]
+      const rightChild = this.values[rightChildIndex]
 
-      if (leftChildIndex < size && value > leftChild.priority) {
+      if (leftChild && value > leftChild.priority) {
         swap = leftChildIndex
       }
 
-      if (rightChildIndex < size && value > rightChild.priority) {
+      if (rightChild && value > rightChild.priority) {
         if (swap === null || rightChild.priority < leftChild.priority) {
           swap = rightChildIndex
         }
@@ -56,9 +55,6 @@ class PriorityQueue {
       if (!swap) break
       this.swap(parent, swap)
       parent = swap
-        
-      leftChildIndex = parent * 2 + 1
-      rightChildIndex = parent * 2 + 2
     }
   }
 
