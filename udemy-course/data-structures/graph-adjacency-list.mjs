@@ -2,7 +2,6 @@
 export default class Graph {
   constructor() {
     this.adjacencyList = {}
-    this.results = {}
   }
 
   addVertex(vertex) {
@@ -46,17 +45,21 @@ export default class Graph {
   }
 
   depthFirstTraversal(vertex) {
+    let results = {}
     if (!this.adjacencyList[vertex]) return null
-    // add the vertex to the list and mark as visited
-    this.results[vertex] = true
-    // mark each neighbour as visited
-    this.adjacencyList[vertex].forEach(vertex => {
-      // if it's not been visited, recursively traverse
-      if (!this.results[vertex]) this.depthFirstTraversal(vertex)
-    })
-    
-    return this.results
 
+    const crawl = (vertex) => {
+      debugger
+      results[vertex] = true
+      // mark each neighbour as visited
+      this.adjacencyList[vertex].forEach(vertex => {
+        // if it's not been visited, recursively traverse
+        if (!results[vertex]) crawl(vertex)
+      })
+    }
+
+    crawl(vertex)    
+    return results
   }
 }
 
