@@ -33,32 +33,32 @@ class PriorityQueue {
   }
 
   sink() {
+    const size = this.values.length
+    const value = this.values[0].priority
     let parent = 0
-    let value = this.values[0].priority
-    let leftChild = parent * 2 + 1
-    let rightChild = parent * 2 + 2
-    let swapped = true
-    while (parent < this.values.length - 1 && swapped) {
-      swapped = false
-      if (leftChild < this.values.length && rightChild < this.values.length) {
-        if (this.values[rightChild].priority < this.values[leftChild].priority) {
-          if (value > this.values[rightChild].priority) {
-            this.swap(parent, rightChild)
-            swapped = true
-            parent = rightChild
-          }
-        } else if (value > this.values[leftChild].priority) {
-          this.swap(parent, leftChild)
-          swapped = true
-          parent = leftChild
-        }
-      } else if (leftChild < this.values.length && value > this.values[leftChild].priority) {
-        this.swap(parent, leftChild)
-        swapped = true
-        parent = leftChild
+    while (parent < this.values.length - 1) {
+      let swap = null
+      let leftChildIndex = parent * 2 + 1
+      let rightChildIndex = parent * 2 + 2
+      let leftChild = this.values[leftChildIndex]
+      let rightChild = this.values[rightChildIndex]
+
+      if (leftChildIndex < size && value > leftChild.priority) {
+        swap = leftChildIndex
       }
-      leftChild = parent * 2 + 1
-      rightChild = parent * 2 + 2
+
+      if (rightChildIndex < size && value > rightChild.priority) {
+        if (swap === null || rightChild.priority < leftChild.priority) {
+          swap = rightChildIndex
+        }
+      }
+      
+      if (!swap) break
+      this.swap(parent, swap)
+      parent = swap
+        
+      leftChildIndex = parent * 2 + 1
+      rightChildIndex = parent * 2 + 2
     }
   }
 
