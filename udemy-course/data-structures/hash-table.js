@@ -14,23 +14,61 @@ class HashTable {
   }
 
   set(key, value) {
-    let pos = this._hash(key)
-    if (!this.keymap[pos]) this.keymap[pos] = []
-    this.keymap[pos].push([key, value])
+    let index = this._hash(key)
+    this.keymap[index] = this.keymap[index] || []
+    this.keymap[index].push([key, value])
 
-    return pos
+    return index
   }
 
   get(key) {
-    let pos = this._hash(key)
-    let storedArray = this.keymap[pos]
+    let index = this._hash(key)
+    let storedArray = this.keymap[index]
     if (!storedArray) return undefined
-    if (storedArray.length === 1) return storedArray[0]
+    let found = storedArray.find(element => element[0] === key)
+    if (!found) {
+      return undefined
+    } 
+    return found[1]
+  }
 
-    return storedArray.find(element => element[0] === key)
+  keys() {
+    let keysArray = []
+    for (let i = 0; i < this.keymap.length; i++) {
+      if (this.keymap[i]) {
+        let size = this.keymap[i].length
+        for (let j = 0; j < size; j++) {
+          keysArray.push(this.keymap[i][j][0])
+        }
+      }
+    }
+    
+    return keysArray
+  }
+
+  values() {
+    let valuesArray = []
+    for (let i = 0; i < this.keymap.length; i++) {
+      if (this.keymap[i]) {
+        let size = this.keymap[i].length
+        for (let j = 0; j < size; j++) {
+          valuesArray.push(this.keymap[i][j][1])
+        }
+      }
+    }
+    
+    return valuesArray
   }
 
 }
 
 let table = new HashTable()
+table.set('dirty', '#44ffff')   // 5
+table.set('maroon', '#44ffff')  // 12
+table.get('pink')               // undefined
+table.set('pink', '#fffddf')    // 5
+table.get('pink')               // '#fffddf'
+table.get('dirty')              // '#44ffff'
+console.log(table.keys()) // ['dirty', 'pink', 'maroon']
+console.log(table.values()) // ['#44ffff', '#fffddf', '#44ffff']
 debugger
