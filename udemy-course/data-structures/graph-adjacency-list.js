@@ -22,11 +22,11 @@ class Graph {
   }
 
   removeVertex(vertex) {
-    let vertexConnections = this.adjacencyList[vertex]
+    const vertexConnections = this.adjacencyList[vertex]
     while (vertexConnections.length) {
       this.removeEdge(vertex, vertexConnections[0])
     }
-    delete vertexConnections
+    delete this.adjacencyList[vertex]
   }
 
   _swapAndPop(vertex, a) {
@@ -51,5 +51,3 @@ graph.addEdge('Wandsworth', 'Battersea')
 debugger
 graph.removeVertex('Wandsworth')
 graph.removeEdge('Richmond', 'Putney')
-graph.removeEdge('Wandsworth', 'Putney')
-graph.removeEdge('Battersea', 'Wandsworth')
