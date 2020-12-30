@@ -1,16 +1,22 @@
 // Undirected graph
-class Graph {
+export default class Graph {
   constructor() {
     this.adjacencyList = {}
+    this.results = {}
   }
 
   addVertex(vertex) {
     this.adjacencyList[vertex] = []
   }
 
+  addVertices(...vertices) {
+    vertices.forEach(vertex => this.addVertex(vertex))
+  }
+
   addEdge(vertex1, vertex2) {
     this.adjacencyList[vertex1].push(vertex2)
     this.adjacencyList[vertex2].push(vertex1)
+    return this
   }
 
   removeEdge(vertex1, vertex2) {
@@ -38,16 +44,29 @@ class Graph {
       array[a] = array.pop()
     }
   }
+
+  depthFirstTraversal(vertex) {
+    if (!this.adjacencyList[vertex]) return null
+    // add the vertex to the list and mark as visited
+    this.results[vertex] = true
+    // mark each neighbour as visited
+    this.adjacencyList[vertex].forEach(vertex => {
+      // if it's not been visited, recursively traverse
+      if (!this.results[vertex]) this.depthFirstTraversal(vertex)
+    })
+    
+    return this.results
+
+  }
 }
 
-let graph = new Graph() 
-graph.addVertex('Battersea')
-graph.addVertex('Putney')
-graph.addVertex('Wandsworth')
-graph.addVertex('Richmond')
-graph.addEdge('Putney', 'Wandsworth')
-graph.addEdge('Putney', 'Richmond')
-graph.addEdge('Wandsworth', 'Battersea')
-debugger
-graph.removeVertex('Wandsworth')
-graph.removeEdge('Richmond', 'Putney')
+// let graph = new Graph() 
+// graph.addVertex('Battersea')
+// graph.addVertex('Putney')
+// graph.addVertex('Wandsworth')
+// graph.addVertex('Richmond')
+// graph.addEdge('Putney', 'Wandsworth')
+// graph.addEdge('Putney', 'Richmond')
+// graph.addEdge('Wandsworth', 'Battersea')
+// graph.removeVertex('Wandsworth')
+// graph.removeEdge('Richmond', 'Putney')
