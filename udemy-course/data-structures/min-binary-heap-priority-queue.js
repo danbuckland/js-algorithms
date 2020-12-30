@@ -28,6 +28,7 @@ class PriorityQueue {
     this.swap(this.values.length - 1, 0)
     let dequeued = this.values.pop()
     this.sink()
+
     return dequeued
   }
 
@@ -36,8 +37,9 @@ class PriorityQueue {
     let value = this.values[0].priority
     let leftChild = parent * 2 + 1
     let rightChild = parent * 2 + 2
-    while (parent < this.values.length - 1) {
-      let swapped = false
+    let swapped = true
+    while (parent < this.values.length - 1 && swapped) {
+      swapped = false
       if (leftChild < this.values.length && rightChild < this.values.length) {
         if (this.values[rightChild].priority < this.values[leftChild].priority) {
           if (value > this.values[rightChild].priority) {
@@ -55,8 +57,6 @@ class PriorityQueue {
         swapped = true
         parent = leftChild
       }
-      
-      if (!swapped) break
       leftChild = parent * 2 + 1
       rightChild = parent * 2 + 2
     }
