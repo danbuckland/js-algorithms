@@ -44,21 +44,37 @@ export default class Graph {
     }
   }
 
-  depthFirstTraversal(vertex) {
+  depthFirstRecursive(start) {
+    if (!this.adjacencyList[start]) return null
     let results = {}
-    if (!this.adjacencyList[vertex]) return null
-
+    
     const crawl = (vertex) => {
-      debugger
       results[vertex] = true
-      // mark each neighbour as visited
       this.adjacencyList[vertex].forEach(vertex => {
-        // if it's not been visited, recursively traverse
         if (!results[vertex]) crawl(vertex)
       })
     }
 
-    crawl(vertex)    
+    crawl(start)
+    return results
+  }
+
+  depthFirstIterative(start) {
+    if (!this.adjacencyList[start]) return null
+    let results = {}
+    let stack = []
+
+    stack.push(start)
+    while(stack.length > 0) {
+      let vertex = stack.pop()
+      if (!results[vertex]) {
+        results[vertex] = true
+      }
+      this.adjacencyList[vertex].forEach(vertex => {
+        if (!results[vertex]) stack.push(vertex)
+      })
+    }
+    
     return results
   }
 }
