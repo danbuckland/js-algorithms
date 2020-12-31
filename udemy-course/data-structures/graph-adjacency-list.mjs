@@ -1,4 +1,6 @@
 // Undirected graph
+import Queue from './queue.mjs'
+
 export default class Graph {
   constructor() {
     this.adjacencyList = {}
@@ -62,19 +64,35 @@ export default class Graph {
   depthFirstIterative(start) {
     if (!this.adjacencyList[start]) return null
     let results = {}
-    let stack = []
+    let stack = [start]
+    let vertex
 
-    stack.push(start)
     while(stack.length > 0) {
-      let vertex = stack.pop()
-      if (!results[vertex]) {
-        results[vertex] = true
-      }
+      vertex = stack.pop()
+      results[vertex] = true
       this.adjacencyList[vertex].forEach(vertex => {
         if (!results[vertex]) stack.push(vertex)
       })
     }
     
+    return results
+  }
+
+  breadthFirstIterative(start) {
+    if (!this.adjacencyList[start]) return null
+    let results = {}
+    let queue = new Queue
+    queue.enqueue(start)
+    let vertex
+    
+    while(queue.size > 0) {
+      vertex = queue.dequeue()
+      results[vertex] = true
+      this.adjacencyList[vertex].forEach(connection => {
+        if (!results[connection]) queue.enqueue(connection)
+      })
+    }
+
     return results
   }
 }

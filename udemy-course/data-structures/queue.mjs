@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class Queue {
+export default class Queue {
   constructor() {
     this.first = null
     this.last = null 
