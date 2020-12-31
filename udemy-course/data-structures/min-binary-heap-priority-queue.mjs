@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class PriorityQueue {
+export default class PriorityQueue {
   constructor() {
     this.values = []
   }
@@ -89,21 +89,21 @@ class PriorityQueue {
   }
 }
 
-let pq = new PriorityQueue()
-pq.enqueue(5, 'Headache').enqueue(2, 'Concussion').enqueue(0, 'Gunshot').enqueue(4, 'The Sniffles').enqueue(8, 'Nerves').enqueue(1, 'Stabbing')
-// [0, 4, 1, 5, 8, 2]
-debugger
-pq.dequeue() // 0
-pq.print() // [1, 4, 2, 5, 8]
-pq.dequeue() // 1
-pq.print() // [2, 4, 8, 5]
-pq.dequeue() // 2
-pq.print() // [4, 5, 8]
-pq.dequeue() // 4
-pq.print() // [5, 8]
-pq.dequeue() // 5
-pq.print() // [8]
-pq.dequeue() // 8
-pq.print() // []
-pq.dequeue() // undefined
+// let pq = new PriorityQueue()
+// pq.enqueue(5, 'Headache').enqueue(2, 'Concussion').enqueue(0, 'Gunshot').enqueue(4, 'The Sniffles').enqueue(8, 'Nerves').enqueue(1, 'Stabbing')
+// // [0, 4, 1, 5, 8, 2]
+// debugger
+// pq.dequeue() // 0
+// pq.print() // [1, 4, 2, 5, 8]
+// pq.dequeue() // 1
+// pq.print() // [2, 4, 8, 5]
+// pq.dequeue() // 2
+// pq.print() // [4, 5, 8]
+// pq.dequeue() // 4
+// pq.print() // [5, 8]
+// pq.dequeue() // 5
+// pq.print() // [8]
+// pq.dequeue() // 8
+// pq.print() // []
+// pq.dequeue() // undefined
 

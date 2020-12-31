@@ -1,5 +1,5 @@
 // Undirected graph
-import Queue from './queue.mjs'
+import Queue from './queue'
 
 export default class Graph {
   constructor() {
