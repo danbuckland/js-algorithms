@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class SinglyLinkedList {
+export default class SinglyLinkedList {
   constructor() {
     this.head = null
     this.tail = null
@@ -142,15 +142,15 @@ class SinglyLinkedList {
   }
 }
 
-let list = new SinglyLinkedList()
-list.push('Hi')
-list.push('there')
-list.push('friend')
-list.push('how')
-list.push('are')
-list.push('you?')
-debugger
-list.reverse()
+// let list = new SinglyLinkedList()
+// list.push('Hi')
+// list.push('there')
+// list.push('friend')
+// list.push('how')
+// list.push('are')
+// list.push('you?')
+// debugger
+// list.reverse()
 // console.log(list.shift())
 // console.log(list.shift())
 // console.log(list.shift())

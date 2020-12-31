@@ -1,5 +1,5 @@
-import './min-binary-heap-priority-queue.mjs'
 import PriorityQueue from './min-binary-heap-priority-queue.mjs'
+import SinglyLinkedList from './singly-linked-list.mjs'
 
 export default class WeightedGraph {
   constructor() {
@@ -60,31 +60,31 @@ export default class WeightedGraph {
 
   getShortestDistance(start, end) {
     // create an object to track shortest path to each node from start
-    let distances = {}
-    let previous = {}
-    let queue = new PriorityQueue()
+    const distances = {}
+    const bestRoute = {}
+    const queue = new PriorityQueue()
     this.getVertices(start).forEach(node => {
       distances[node] = Infinity
       queue.enqueue(Infinity, node)
-      previous[node] = null
+      bestRoute[node] = null
     })
     distances[start] = 0
     // loop while there are still items in the queue
     while(queue.values.length) {
-      // dequeue the vertex
-      let vertex = queue.dequeue()
-      if (vertex.value !== end) {
-        this.adjacencyList[vertex.value].forEach(connection => {
+      // get the nearest node from the queue
+      const smallest = queue.dequeue().value
+      if (smallest !== end) {
+        // loop through each connection of the nearest node
+        this.adjacencyList[smallest].forEach(connection => {
           let connectedNode = connection.node
           let distanceFromNode = connection.weight
-          // calculate the distance to that vertex from the start
-          let calculatedDistance = distanceFromNode + distances[vertex.value]
-          // if calculatedDistance is < distances object 
+          // calculate the distance of each connection from the start
+          let calculatedDistance = distanceFromNode + distances[smallest] 
           if (calculatedDistance < distances[connectedNode]) {
             // update distances object with calculatedDistance
             distances[connectedNode] = calculatedDistance
             // update previous to contain vertex
-            previous[connectedNode] = vertex.value
+            bestRoute[connectedNode] = smallest
             // enqueue the vertex with the new distance as priority
             queue.enqueue(calculatedDistance, connectedNode)
           }
@@ -93,5 +93,51 @@ export default class WeightedGraph {
     }
     
     return distances[end]
+  }
+
+  getShortestRoute(start, end) {
+    // create an object to track shortest path to each node from start
+    const distances = {}
+    const bestRoute = {}
+    const queue = new PriorityQueue()
+    const path = new SinglyLinkedList()
+    this.getVertices(start).forEach(node => {
+      distances[node] = Infinity
+      queue.enqueue(Infinity, node)
+      bestRoute[node] = null
+    })
+    distances[start] = 0
+    // loop while there are still items in the queue
+    while(queue.values.length) {
+      // get the nearest node from the queue
+      let smallest = queue.dequeue().value
+      if (smallest !== end) {
+        // loop through each connection of the nearest node
+        this.adjacencyList[smallest].forEach(connection => {
+          let connectedNode = connection.node
+          let distanceFromNode = connection.weight
+          // calculate the distance of each connection from the start
+          let calculatedDistance = distanceFromNode + distances[smallest] 
+          if (calculatedDistance < distances[connectedNode]) {
+            // update distances object with calculatedDistance
+            distances[connectedNode] = calculatedDistance
+            // update previous to contain vertex
+            bestRoute[connectedNode] = smallest
+            // enqueue the vertex with the new distance as priority
+            queue.enqueue(calculatedDistance, connectedNode)
+          }
+        })
+      } else { // found the end, build the path
+        // while bestRoute object key is not null, i.e. it's not the start
+        while(bestRoute[smallest]) {
+          path.unshift(smallest)
+          // set smallest to the previous stop in the route
+          smallest = bestRoute[smallest]
+        }
+        path.unshift(smallest)
+        path.print()
+        break
+      }
+    }
   }
 }

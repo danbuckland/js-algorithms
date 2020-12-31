@@ -11,9 +11,10 @@ graph.addEdge('D', 'E', 3) //    \      |      /
 graph.addEdge('D', 'F', 1) //      4    1    1
 graph.addEdge('E', 'F', 1) //       \   |   /
                            //          (F)
-
 console.log(graph.getShortestDistance('A', 'E')) // 6
+graph.getShortestRoute('A', 'E')                 // [A, C, D, F, E]
 console.log(graph.getShortestDistance('A', 'A')) // 0
+console.log(graph.getShortestDistance('A', 'C')) // 2
 console.log(graph.getShortestDistance('A', 'D')) // 4
 console.log(graph.getShortestDistance('A', 'F')) // 5
 console.log(graph.getShortestDistance('F', 'D')) // 1
