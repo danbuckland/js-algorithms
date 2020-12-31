@@ -70,8 +70,8 @@ export default class Graph {
     while(stack.length > 0) {
       vertex = stack.pop()
       results[vertex] = true
-      this.adjacencyList[vertex].forEach(vertex => {
-        if (!results[vertex]) stack.push(vertex)
+      this.adjacencyList[vertex].forEach(connection => {
+        if (!results[connection]) stack.push(connection)
       })
     }
     

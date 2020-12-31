@@ -37,6 +37,3 @@ export default class Queue {
     return dequeued.value
   }
 }
-
-let q = new Queue()
-debugger
