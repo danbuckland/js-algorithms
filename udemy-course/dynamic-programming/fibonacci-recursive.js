@@ -1,9 +1,10 @@
-const fib = (n) => {
+// Standard recursive implementation – O(2^n)
+const fibrec = (n) => {
   if (n <= 2) return 1
-
-  return fib(n - 1) + fib(n - 2)
+  return fibrec(n - 1) + fibrec(n - 2)
 }
 
+// Iterative implementation - O(n)
 const fibit = (n) => {
   // if n is 5 it would be:
   if (n <= 2) return 1
@@ -18,14 +19,27 @@ const fibit = (n) => {
   return current
 }
 
-const fibmem = (n, memo=[0,1,1]) => {
+// Dynamic Programming recursive solution with memoization - O(n)
+const fibmem = (n, memo = [0, 1, 1]) => {
   return memo[n] = memo[n] || fibmem(n - 1, memo) + fibmem(n - 2, memo)
+}
+
+// Dynamic programming iterative solution with tabulation
+const fibtab = (n) => {
+  if (n <= 2) return 1
+  const fibs = [0,1,1]
+  for (let i = 3; i <= n; i++) {
+    fibs[i] = fibs[i - 1] + fibs[i - 2]
+  }
+  return fibs[n]
 }
 
 // Test cases 
 console.log(fibmem(1)) // 1
 console.log(fibmem(2)) // 1
 console.log(fibmem(45)) // 3
+console.log(fibtab(45))
+
 // console.log(fib(5))    // 5
 // console.log(fibit(5))  // 5
 // console.log(fib(6))    // 8
