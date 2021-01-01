@@ -18,14 +18,8 @@ const fibit = (n) => {
   return current
 }
 
-let memo = [0,1,1]
-
-const fibmem = (n) => {
-  if (!memo[n]) {
-    // calculate it and store it
-    memo[n] = fibmem(n - 1) + fibmem(n - 2)
-  }
-  return memo[n]
+const fibmem = (n, memo=[0,1,1]) => {
+  return memo[n] = memo[n] || fibmem(n - 1, memo) + fibmem(n - 2, memo)
 }
 
 // Test cases 
