@@ -20,11 +20,13 @@ const fibit = (n) => {
 }
 
 // Dynamic Programming recursive solution with memoization - O(n)
+// Space complexity is not good - leading to a stack overflow eventually 
 const fibmem = (n, memo = [0, 1, 1]) => {
   return memo[n] = memo[n] || fibmem(n - 1, memo) + fibmem(n - 2, memo)
 }
 
-// Dynamic programming iterative solution with tabulation
+// Dynamic programming iterative solution with tabulation - O(n)
+// Space complexity is not an issue even with the largest numbers
 const fibtab = (n) => {
   if (n <= 2) return 1
   const fibs = [0,1,1]
