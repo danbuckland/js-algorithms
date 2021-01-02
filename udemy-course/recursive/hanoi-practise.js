@@ -3,9 +3,12 @@ let printMove = (a, b) => {
 }
 
 let hanoi = (discs, origin = 1, target = 3) => {
+  // Base case - if there's only 1 disc, it's simple!
   if (discs === 1) return printMove(origin, target)
 
+  // Spare needs to be calculated dynamically as origin and target change
   let spare = 6 - origin - target
+  
   hanoi(discs - 1, origin, spare)
   printMove(origin, target)
   hanoi(discs - 1, spare, target)
