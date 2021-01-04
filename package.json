@@ -1,0 +1,19 @@
+{
+  "name": "fb-algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danbuckland/fb-algorithms.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/danbuckland/fb-algorithms/issues"
+  },
+  "homepage": "https://github.com/danbuckland/fb-algorithms#readme"
+}
