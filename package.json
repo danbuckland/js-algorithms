@@ -1,5 +1,5 @@
 {
-  "name": "fb-algorithms",
+  "name": "js-algorithms",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danbuckland/fb-algorithms.git"
+    "url": "git+https://github.com/danbuckland/js-algorithms.git"
   },
   "author": "",
-  "license": "",
+  "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/danbuckland/fb-algorithms/issues"
+    "url": "https://github.com/danbuckland/js-algorithms/issues"
   },
-  "homepage": "https://github.com/danbuckland/fb-algorithms#readme"
+  "homepage": "https://github.com/danbuckland/js-algorithms#readme"
 }
